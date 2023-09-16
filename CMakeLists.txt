@@ -6,7 +6,10 @@ project(SparkleTemplateProject
     DESCRIPTION "A template for Project using Sparkle library."
     LANGUAGES CXX)
 
-find_package(Sparkle REQUIRED)
+find_package(SparkleOpenGL REQUIRED)
 
 add_executable(SparkleTemplateProject "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/includes)
+
+target_include_directories(SparkleTemplateProject PRIVATE ${Sparkle_INCLUDE_DIR})
+target_link_directories(SparkleTemplateProject PRIVATE ${Sparkle_LIBRARY_DIR})
+target_link_libraries(SparkleTemplateProject ${Sparkle_LIBRARIES})
